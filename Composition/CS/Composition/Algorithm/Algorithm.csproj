@@ -39,14 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Composition\AveragingStrategy.cs" />
-    <Compile Include="Composition\EmptyFilter.cs" />
-    <Compile Include="Composition\HighPassFilter.cs" />
-    <Compile Include="Composition\IAggregationStrategy.cs" />
-    <Compile Include="Composition\IMeasurementFilter.cs" />
-    <Compile Include="Composition\LowPassFilter.cs" />
+    <Compile Include="Composition\AggregationStrategies\AveragingStrategy.cs" />
+    <Compile Include="Composition\FilterStrategies\EmptyFilter.cs" />
+    <Compile Include="Composition\FilterStrategies\HighPassFilter.cs" />
+    <Compile Include="Composition\Interfaces\IAggregationStrategy.cs" />
+    <Compile Include="Composition\Interfaces\IMeasurementFilter.cs" />
+    <Compile Include="Composition\Interfaces\ISampler.cs" />
+    <Compile Include="Composition\FilterStrategies\LowPassFilter.cs" />
     <Compile Include="Composition\PointsAggregator.cs" />
-    <Compile Include="Composition\SummingStrategy.cs" />
+    <Compile Include="Composition\AggregationStrategies\SummingStrategy.cs" />
+    <Compile Include="Composition\SampleStrategies\RandomSampleStrategy.cs" />
+    <Compile Include="Composition\SampleStrategies\RegularSampleStrategy.cs" />
     <Compile Include="Inheritance\AveragingAggregator.cs" />
     <Compile Include="Inheritance\HighPassSummingAggregator.cs" />
     <Compile Include="Inheritance\LowPassAveragingAggregator.cs" />

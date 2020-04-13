@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Algorithm.Composition.Interfaces;
 
-namespace Algorithm.Composition
+namespace Algorithm.Composition.FilterStrategies
 {
     public class EmptyFilter : IMeasurementFilter
     {

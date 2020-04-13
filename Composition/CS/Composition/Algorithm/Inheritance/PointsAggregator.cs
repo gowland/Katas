@@ -4,21 +4,23 @@ namespace Algorithm.Inheritance
 {
     public abstract class PointsAggregator
     {
-        protected PointsAggregator(IEnumerable<Measurement> measurements)
+        public virtual Measurement Aggregate(IEnumerable<Measurement> measurements)
         {
-            Measurements = measurements;
-        }
-
-        public virtual Measurement Aggregate()
-        {
-            var measurements = Measurements;
+            measurements = SampleMeasurements(measurements);
             measurements = FilterMeasurements(measurements);
             return AggregateMeasurements(measurements);
         }
 
-        protected abstract IEnumerable<Measurement> FilterMeasurements(IEnumerable<Measurement> measurements);
+        protected virtual IEnumerable<Measurement> SampleMeasurements(IEnumerable<Measurement> measurements)
+        {
+            return measurements;
+        }
+
+        protected virtual IEnumerable<Measurement> FilterMeasurements(IEnumerable<Measurement> measurements)
+        {
+            return measurements;
+        }
+
         protected abstract Measurement AggregateMeasurements(IEnumerable<Measurement> measurements);
-        
-        protected readonly IEnumerable<Measurement> Measurements;
     }        
 }

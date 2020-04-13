@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using Algorithm.Composition.Interfaces;
 
-namespace Algorithm.Composition
+namespace Algorithm.Composition.FilterStrategies
 {
     public class LowPassFilter : IMeasurementFilter
     {

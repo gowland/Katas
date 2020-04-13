@@ -1,27 +1,28 @@
 ﻿using System.Collections.Generic;
+using Algorithm.Composition.Interfaces;
 
 namespace Algorithm.Composition
 {
     public class PointsAggregator
     {
         public PointsAggregator(
-            IEnumerable<Measurement> measurements, 
-            IMeasurementFilter filter, 
-            IAggregationStrategy aggregator)
+            IAggregationStrategy aggregator,
+            IMeasurementFilter filter = null,
+            ISampler sampler = null)
         {
-            _measurements = measurements;
-            _filter = filter;
             _aggregator = aggregator;
+            _filter = filter;
+            _sampler = sampler;
         }
 
-        public virtual Measurement Aggregate()
+        public virtual Measurement Aggregate(IEnumerable<Measurement> measurements)
         {
-            var measurements = _measurements;
-            measurements = _filter.Filter(measurements);            
+            measurements = _sampler == null ? measurements : _sampler.Sample(measurements);
+            measurements = _filter == null ? measurements : _filter.Filter(measurements);            
             return _aggregator.Aggregate(measurements);
         }
 
-        private readonly IEnumerable<Measurement> _measurements;
+        private readonly ISampler _sampler;
         private readonly IMeasurementFilter _filter;
         private readonly IAggregationStrategy _aggregator;
     }        

@@ -5,18 +5,9 @@ namespace Algorithm.Inheritance
 {
     public class AveragingAggregator : PointsAggregator
     {
-        public AveragingAggregator(IEnumerable<Measurement> measurements)
-            : base(measurements)
-        {
-        }
-
-        protected override IEnumerable<Measurement> FilterMeasurements(IEnumerable<Measurement> measurements)
-        {
-            return measurements;
-        }
-
         protected override Measurement AggregateMeasurements(IEnumerable<Measurement> measurements)
-        {           
+        {
+            measurements = measurements.ToArray();
             return new Measurement
                        {
                            X = (int)measurements.Average(m => m.X), 

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Algorithm.Composition
+namespace Algorithm.Composition.Interfaces
 {
     public interface IAggregationStrategy
     {
